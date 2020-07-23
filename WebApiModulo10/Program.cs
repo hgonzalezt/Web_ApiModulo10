@@ -22,12 +22,12 @@ namespace WebApiModulo10
 
             // Segunda forma de realizar las migraciones en IIS. (O donde sea)
             // En Azure no necesitamos este código por lo explicado en el curso
-            //using (var scope = webHost.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    var applicationDbContext = services.GetService<ApplicationDbContext>();
-            //    applicationDbContext.Database.Migrate();
-            //}
+            using (var scope = webHost.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var applicationDbContext = services.GetService<ApplicationDbContext>();
+                applicationDbContext.Database.Migrate();
+            }
 
             webHost.Run();
         }
